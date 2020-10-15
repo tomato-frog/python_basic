@@ -14,7 +14,7 @@ increase_rate = 1.1
 new_result = first_result
 
 while True:
-    print(f'{current_day} day: {new_result:.1f}')
+    print(f'{current_day} day: {new_result:.2f}')
 
     if new_result >= desired_result:
         break
