@@ -19,7 +19,7 @@ while True:
     if new_result >= desired_result:
         break
 
-    new_result = (new_result * increase_rate)
+    new_result *= increase_rate
     current_day += 1
 
 print(f'Спортсмен достигнет своей цели на {current_day}-й день.')
