@@ -60,14 +60,16 @@ products_length = len(products)
 teen = 10 < products_length < 20
 choice_rem = products_length % 10
 
+product_text = f"{products_length}"
+
 if products_length == 0:
-    product_text = f"{products_length} {products_texts[0]}"
+    product_text += f" {products_texts[0]}"
 elif not teen and choice_rem == 1:
-    product_text = f"{products_length} {products_texts[1]}"
+    product_text += f" {products_texts[1]}"
 elif not teen and 2 <= choice_rem <= 4:
-    product_text = f"{products_length} {products_texts[2]}"
+    product_text += f" {products_texts[2]}"
 else:
-    product_text = f"{products_length} {products_texts[3]}"
+    product_text += f" {products_texts[3]}"
 
 print(f"\nАналитика на {product_text}:")
 
