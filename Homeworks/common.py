@@ -9,14 +9,18 @@ def safe_intput(
             print(error)
 
 
-def range_func(start, end, increment=1):
+def my_range(start, end, increment=1):
     iteration = start
     while iteration < end:
         yield iteration
         iteration += increment
 
 
-def my_title_func(word: str):
+def my_title(word: str):
     first_letter = word[0].upper()
     the_rest = word[1:].lower()
     return first_letter + the_rest
+
+
+def my_abs(num):
+    return -num if num < 0 else num
