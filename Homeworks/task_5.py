@@ -16,7 +16,7 @@ while True:
     for number in numbers:
         try:
             if number == 'q':
-                print(f'Завершающая сумма равна: {result}')
+                print(f'Итоговая сумма равна: {result}')
                 break
             else:
                 result += int(number)
