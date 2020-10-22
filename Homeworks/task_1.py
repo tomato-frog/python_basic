@@ -5,8 +5,8 @@
 from common import safe_intput
 
 
-def divide(divisor, divider):
-    return divisor / divider
+def divide(dividend, divisor):
+    return dividend / divisor
 
 
 x = safe_intput('Введите делимое: ')
