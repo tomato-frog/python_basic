@@ -10,5 +10,11 @@ def func(name, surname, birth_year, city, email, phone):
     print(name, surname, birth_year, city, email, phone)
 
 
-func(input('Введите имя: '), input('Введите фамлию: '), input('Введите год рождения: '), input('Введите город: '),
-     input('Введите email: '), input('Введите номер телефона: '))
+func(
+    name=input('Введите имя: '),
+    surname=input('Введите фамлию: '),
+    birth_year=input('Введите год рождения: '),
+    city=input('Введите город: '),
+    email=input('Введите email: '),
+    phone=input('Введите номер телефона: ')
+)
