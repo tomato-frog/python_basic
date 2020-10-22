@@ -4,16 +4,16 @@
 Задание необходимо реализовать в виде функции my_func(x, y).
 При решении задания необходимо обойтись без встроенной функции возведения числа в степень.
 """
-from common import range_func
+from common import my_range, my_abs
 
 
 def my_func(x, y):
     result = 1
 
-    for _ in range_func(0, abs(y)):
+    for _ in my_range(0, my_abs(y)):
         result *= x
 
     return 1 / result if y < 0 else result
 
 
-print(my_func(2, -3))
+print(my_func(0.125, -1))

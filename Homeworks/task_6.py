@@ -7,18 +7,18 @@
 Сделать вывод исходной строки, но каждое слово должно начинаться с заглавной буквы.
 Необходимо использовать написанную ранее функцию int_func().
 """
-
-text = input('Введите текст: ').split()
-list_of_titles = []
-i = 0
+from common import my_title
 
 
-def int_func(text):
-    return text.title()
+def int_func(word):
+    return my_title(word)
 
 
-while i < len(text):
-    list_of_titles.append(int_func(text[i]))
-    i += 1
+def get_titles(text):
+    for word in text:
+        yield int_func(word)
 
-print(' '.join(list_of_titles))
+
+words = input('Введите текст: ').split()
+
+print(' '.join(get_titles(words)))
