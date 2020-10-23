@@ -17,6 +17,13 @@ def safe_intput(
 
 
 def my_range(start, end, increment=1):
+    """
+    Функция принимает значения по которым будет создана последовательность.
+    :param start: число с которого начинается последовательность
+    :param end: число до которого продолжается последовательность, указанное число не включается в диапазон
+    :param increment: шаг увеличения
+    :return: неизменяемая последовательность чисел
+    """
     iteration = start
     while iteration < end:
         yield iteration
@@ -36,6 +43,11 @@ def my_title(word: str):
 
 
 def my_abs(num):
+    """
+    Функция идентична встроенной функции abs()
+    :param num: число
+    :return: абсолютная величина числа
+    """
     return -num if num < 0 else num
 
 
