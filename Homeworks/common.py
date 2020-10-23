@@ -61,3 +61,18 @@ def my_map(f, iterable):
     """
     for i in iterable:
         yield f(i)
+
+
+def my_max(*numbers):
+    """
+    Функция возвращает наибольшее число из переданных.
+    :param numbers: числа
+    :return: максимальное число
+    """
+    maximum = numbers[0]
+
+    for num in numbers[1:]:
+        if num > maximum:
+            maximum = num
+
+    return maximum
