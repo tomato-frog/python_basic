@@ -24,3 +24,8 @@ def my_title(word: str):
 
 def my_abs(num):
     return -num if num < 0 else num
+
+
+def my_map(f, iterable):
+    for i in iterable:
+        yield f(i)

@@ -7,18 +7,13 @@
 Сделать вывод исходной строки, но каждое слово должно начинаться с заглавной буквы.
 Необходимо использовать написанную ранее функцию int_func().
 """
-from common import my_title
+from common import my_title, my_map
 
 
 def int_func(word):
     return my_title(word)
 
 
-def get_titles(text):
-    for word in text:
-        yield int_func(word)
-
-
 words = input('Введите текст: ').split()
 
-print(' '.join(get_titles(words)))
+print(' '.join(my_map(int_func, words)))
