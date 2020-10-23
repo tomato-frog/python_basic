@@ -6,12 +6,12 @@ from common import safe_intput
 
 
 def my_func(x, y, z):
-    if x + y >= y + z:
-        return x + y
-    elif y + z >= x + y:
+    if y + z > x + y and y + z > x + z:
         return y + z
-    elif x + z >= z + y:
+    elif x + z > z + y and x + z > x + y:
         return x + z
+    else:
+        return x + y
 
 
 print(my_func(safe_intput('Введите число x: '), safe_intput('Введите число y: '), safe_intput('Введите число z: ')))
