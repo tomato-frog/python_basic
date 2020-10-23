@@ -24,6 +24,12 @@ def my_range(start, end, increment=1):
 
 
 def my_title(word: str):
+    """
+    Функция конвертирует первый элемент принятой строки в верхний регистр,
+    а все оставшиеся элементы в нижний регистр.
+    :param word: строка
+    :return: строка с заглавной буквы
+    """
     first_letter = word[0].upper()
     the_rest = word[1:].lower()
     return first_letter + the_rest
@@ -34,5 +40,12 @@ def my_abs(num):
 
 
 def my_map(f, iterable):
+    """
+    Функция идентична встроенной функции map()
+    :param f: функция
+    :param iterable: итерируемый объект
+    :return: преобразует значения в итерируемом объекте используя функцию f
+     и возвращает новый итератор с изменёнными значениями
+    """
     for i in iterable:
         yield f(i)
