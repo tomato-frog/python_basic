@@ -4,8 +4,15 @@
 """
 
 with open('task_5.txt', 'w') as file:
-    numbers = input('Введите числа через пробел: ')
-    file.write(numbers)
+    while True:
+        numbers = input('Введите числа через пробел: ')
+        try:
+            for number in numbers.split():
+                float(number)
+            file.write(numbers)
+            break
+        except ValueError:
+            print('Вы ввели не числа')
 
 
 with open('task_5.txt', 'r') as file:
