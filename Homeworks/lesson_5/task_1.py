@@ -34,7 +34,7 @@ class Matrix:
     def __str__(self):
         result = ''
         for vector in self._data:
-            result += '\n' + '|' + ' '.join(map(str, vector)) + '|'
+            result += '|' + ' '.join(map(str, vector)) + '|' + '\n'
         return result
 
 
