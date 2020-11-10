@@ -85,4 +85,3 @@ try:
     print(cel1.make_order(3))
 except ValueError as err:
     print(err)
-
