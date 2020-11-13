@@ -14,9 +14,25 @@
 """
 from __future__ import annotations
 from abc import ABC, abstractmethod
-
 from typing import Dict
-from common import safe_intput
+
+
+def safe_intput(
+        text: str = 'Введите число: ',
+        error: str = 'Вы ввели не число!',
+):
+    """
+    Функция вызывает ввод, проверяет его на ValueError, при возникновении ошибки снова запрашивает ввод.
+    Если ввод корректен - преобразовывает введённое значение в int .
+    :param text: выводится при запросе ввода
+    :param error: выводится при попытке пользователя ввести не число
+    :return: преобразованный в int ввод
+    """
+    while True:
+        try:
+            return int(input(text))
+        except ValueError:
+            print(error)
 
 
 class EquipmentError(Exception):
@@ -143,8 +159,8 @@ class EquipmentSender(WithStorage, ABC):
             self.items[type(piece)].remove(piece)
             available_pieces.append(piece)
 
-            # if self.count(type(piece)) == 0:
-            #     del self.items[type(piece)]
+            if self.count(type(piece)) == 0:
+                del self.items[type(piece)]
 
         receiver.receive(*available_pieces)
 
@@ -165,30 +181,33 @@ class Warehouse(EquipmentSender, Department):
     pass
 
 
-printer = Printer('Canon', 'LBP710Сx', 200, True)
-scanner = Scanner('Plustek', 'OpticFilm 8200i SE', 300, True)
-xerox = Xerox('Xerox', 'WorkCentre 3025', 110, 'A4')
+def ask_to_send(what, where):
+    return safe_intput(f'Сколько {what}ов отправить {where}? ')
 
+
+available_equipment = {
+    'принтер': Printer('Canon', 'LBP710Сx', 200, True),
+    'сканер': Scanner('Plustek', 'OpticFilm 8200i SE', 300, True),
+    'ксерокc': Xerox('Xerox', 'WorkCentre 3025', 110, 'A4'),
+}
 
 my_warehouse = Warehouse('Kazan')
 my_department = Department('Innopolis')
 
-for element in range(safe_intput('Сколько принтеров отправить на склад?')):
-    my_warehouse.receive(printer)
-
-for element in range(safe_intput('Сколько сканнеров отправить на склад?')):
-    my_warehouse.receive(scanner)
-
-for element in range(safe_intput('Сколько ксероксов отправить на склад?')):
-    my_warehouse.receive(xerox)
+for item_name in available_equipment:
+    item = available_equipment[item_name]
+    for _ in range(ask_to_send(item_name, 'на склад')):
+        my_warehouse.receive(item)
 
 print(my_warehouse)
 print()
 
 try:
-    my_warehouse.send(my_department, *([printer] * safe_intput(f'Сколько принтеров отправить в подразделение? '),
-                                       *([scanner] * safe_intput(f'Сколько сканнеров отправить в подразделение? '),
-                                       *([xerox] * safe_intput(f'Сколько ксероксов отправить в поздразделение? ')))))
+    my_warehouse.send(my_department, *[
+        available_equipment[name]
+        for name in available_equipment
+        for _ in range(ask_to_send(name, 'в подразделение'))
+    ])
 except EquipmentError as err:
     print(err)
 
